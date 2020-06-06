@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta name="viewport" content="width=device-width, intial-scale=1.0">
+    <link rel="stylesheet" href="HomeStyle.css">
+    <link rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.0/css/mdb.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="models.js"></script>
+    <script src="script.js" charset="utf-8"></script>
+    <title>My List</title>
+    <style >
+    .request_table tr>td {
+      padding: 1em;
+      text-align: center;
+    }
+
+    </style>
+  </head>
+  <body>
+    <div class="header">
+    <a href="index.html" class="logo">Make My Trip</a>
+    <div class="header-right">
+      <a  href="index.html">Home</a>
+     
+      <a href="Services.html">Services</a>
+      <a href="contact-us.html">Contact</a>
+      <a href="About-us.html">About</a>
+      <a href="mylist.html" class="active" id="mylist">My List</a>
+      <a href="login.html" id="login_b">Login</a>
+      <a href="index.html" id="logout_b" onclick="performLogout()">Logout</a>
+    </div>
+  </div>
+  <section class="first">
+    <h1>ENJOY TRAVEL</h1>
+    
+    </section>
+  <div class="container p-4">
+    <div class="row pt-4">
+      <div class="col-12 ">
+
+
+  <div id="accordion">
+  <div class="card" >
+    <div class="card-header" id="headingOne">
+      <h5 class="mb-0">
+        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Hotel Bookings
+        </button>
+      </h5>
+    </div>
+
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+      <div class="card-body">
+      <table class="table table-responsive table-striped request_table" id="hotelRequest">
+        <tr>
+          <th class="m-1 p-2"> </th>
+          <th class="m-1 p-2"></th>
+        <th class="m-1 p-2"></th>
+        <th class="m-1 p-2"></th>
+        <th class="m-1 p-2"></th>
+        <th class="m-1 p-2"></th>
+        <th class="m-1 p-2"></th>
+
+
+        </tr>
+
+      </table>
+    </div>
+  </div>
+ 
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+  
+     <!-- Footer -->
+     <footer class="page-footer">
+
+      <!-- Footer Elements -->
+    <div class="container">
+  
+    <!-- Grid row-->
+    <div class="row">
+  
+      <!-- Grid column -->
+      <div class="col-md-12 py-5">
+        <div class="mb-5 flex-center">
+  
+  
+          <a class="fb-ic" href="https://www.facebook.com/">
+            <i class="fab fa-facebook-f fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+          </a>
+  
+          
+          <a class="gplus-ic" href="https://www.instagram.com/">
+            <i class="fab fa-google-plus-g fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+          </a>
+  
+        
+         
+        </div>
+      </div>
+  
+  
+    </div>
+      </div>
+  
+      <div class="footer-copyright text-center py-3"> 
+        & Copyright 2020 Make My Trip. All Right Reseved.<br>
+     <a href="index.html">info@makemytrip.com</a>    
+    </div>
+  
+    </footer>
+  </body>
+
+
+
+  <script type="text/javascript">
+
+  function performLogout() {
+    localStorage.removeItem("currentuser");
+    window.href = "login-signup.html";
+      alert(" Logout ");
+  }
+    var userId = localStorage.getItem("currentuser");
+    $(document).ready(function() {
+
+      getHotelRequests(userId).then(response=> {
+        bindHotelRequestToTable(response);
+      });
+    });
+
+
+
+    function bindHotelRequestToTable(hotelRequests) {
+      console.log(hotelRequests);
+      var hotelTable = document.getElementById("hotelRequest");
+      hotelRequests.forEach((hotelRequest, i) => {
+        let index = i+1;
+        let row = hotelTable.insertRow(index);
+
+
+        row.innerHTML = `<td>${index}</td><td>${hotelRequest.name}</td><td>${hotelRequest.room}</td><td>${hotelRequest.checkIn}</td><td>${hotelRequest.checkOut}</td>`;
+
+
+      });
+
+    }
+  
+     
+  </script>
+
+</html>

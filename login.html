@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta name="viewport" content="width=device-width, intial-scale=1.0">
+    <link rel="stylesheet" href="HomeStyle.css">
+    <link rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.0/css/mdb.min.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="Models.js">
+
+    </script>
+    <title>Login</title>
+  </head>
+  <body>
+    <div class="header">
+    <a href="index.html" class="logo">Make My Trip</a>
+    <div class="header-right">
+      <a  href="index.html">Home</a>
+      <a href="mylist.html" id="mylist">My Bookings</a>
+      <a href="Services.html">Services</a>
+      <a href="contact-us.html">Contact</a>
+      <a href="About-us.html">About</a>
+      <a href="login.html" class="active" id="login_b">Login</a>
+      <a href="home.html" id="logout_b" onclick="performLogout()">Logout</a>
+
+    </div>
+  </div>
+
+  <section class="first">
+    <h1>ENJOY TRAVEL</h1>
+    
+    </section>
+
+  <div class="container-fluid pt-4">
+  		<div class="container">
+  	
+   			<hr>
+  			<div class="#">
+  				<div class="#"</div>
+  				</div>
+
+  				<div class="col-md-5"  style="text-align: center;>
+   				 		<form role="form" style="text-align: center;">
+  						<fieldset>
+                              <br>
+                            <strong>
+  							<p class="text-uppercase"> Login </p>
+                          </strong>  
+  							<div class="form-group">
+  								<input type="text" name="username" id="username-login" class="form-control input-lg" placeholder="username">
+  							</div>
+  							<div class="form-group">
+  								<input type="password" name="password" id="password-login" class="form-control input-lg" placeholder="Password">
+                              </div>
+                              <div class="form-group">
+                              <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
+                            </div>
+  							<div>
+  								<input  type="button" class="btn btn-md" value="Sign In"  onClick="login()">
+  							</div>
+
+   						</fieldset>
+  				</form>
+  				</div>
+  			</div>
+  		</div>
+
+  	</div>
+
+
+
+
+
+
+
+     <!-- Footer -->
+  <footer class="page-footer">
+
+    <!-- Footer Elements -->
+  <div class="container">
+
+  <!-- Grid row-->
+  <div class="row">
+
+    <!-- Grid column -->
+    <div class="col-md-12 py-5">
+      <div class="mb-5 flex-center">
+
+
+        <a class="fb-ic" href="https://www.facebook.com/">
+          <i class="fab fa-facebook-f fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+        </a>
+
+        
+        <a class="gplus-ic" href="https://www.instagram.com/">
+          <i class="fab fa-google-plus-g fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+        </a>
+
+      
+       
+      </div>
+    </div>
+
+
+  </div>
+    </div>
+
+    <div class="footer-copyright text-center py-3"> 
+      & Copyright 2020 Make My Trip. All Right Reseved.<br>
+   <a href="index.html">info@makemytrip.com</a>    
+  </div>
+
+  </footer>
+  </body>
+</html>
+<script type="text/javascript">
+
+  function performLogout() {
+    localStorage.removeItem("currentuser");
+    window.href = "login-signup.html";
+    alert(" Logout ");
+  }
+
+
+
+
+
+    // storing input from register-form
+    function store() {
+      let fname = document.getElementById('fname').value;
+      let lname = document.getElementById('lanme').value;
+      let password = document.getElementById('password').value;
+      let password2 = document.getElementById('password2').value;
+
+    let  username = document.getElementById('username').value;
+
+    let  email = document.getElementById('email').value;
+    if(fname == ""|| lname==""||password == "" || password2 == ""|| username =="" || email == ""){
+      alert(" All Fileds are mandatory");
+    }
+else{
+
+      var user = new User(fname,lname,password,email,username);
+      addUserToDB(user);
+      alert("Sign Up successfully. Now please Login with Username and password to Book Flights");
+}
+    }
+
+    
+    function login(){
+      let  username = document.getElementById('username-login').value;
+
+      let password = document.getElementById('password-login').value;
+      checkLogin(username,password).then((response)=>{
+          console.log(response);
+
+          if(response) {
+            processLogin(username);
+            alert("Login successful");
+
+          }
+          else {
+            // Login not successful TODO
+            alert("Please Enter Valid Username and Password");
+
+          }
+
+      });
+
+    
+    }
+
+
+
+    function processLogin(username) {
+      var btn_logn = document.getElementById('login_b');
+      btn_logn.style.display = "none";
+
+      getUserId(username).then((response) => {
+        if(response!= "not found") {
+          localStorage.setItem("currentuser",response);
+          window.location = "index.html";
+
+        }
+        else {
+
+        }
+      });
+    }
+
+</script>
+<script type="text/javascript" src="script.js">
+
+</script>

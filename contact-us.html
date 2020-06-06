@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta name="viewport" content="width=device-width, intial-scale=1.0">
+    <link rel="stylesheet" href="HomeStyle.css">
+    <link rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.0/css/mdb.min.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="Models.js">
+
+  </script>
+    <title>Contact Us</title>
+  </head>
+  <body>
+    <div class="header">
+      <a href="index.html" class="logo">Make My Trip</a>
+      <div class="header-right">
+        <a  href="index.html">Home</a>
+        
+        <a  href="Services.html">Services</a>
+        <a href="contact-us.html" class="active">Contact</a>
+          <a href="About-us.html">About</a>
+          <a href="mylist.html" id="mylist">My List</a>
+        <a href="login.html" id="login_b">Login</a>
+        <a href="index.html" id="logout_b" onclick="performLogout()">Logout</a>
+  
+       
+      </div>
+      </div>
+      <section class="first">
+        <h1>ENJOY TRAVEL</h1>
+          </section>
+          <br>
+          <br>
+          <!-- main content of the website -->
+      <main style="text-align: center;">
+        <h2>Contact us today.</h2>
+        <p>
+          We are located at: <br />
+         #265 Yorkland  <br />
+          Toronto
+        </p>
+
+        <p>Phone Number</p>
+
+        <p>
+          <a class="mobile" href="tel:8145559608">(814) 555-9608)</a
+         
+        </p>
+
+        <p>
+          Email Address
+        </p>
+        <p>
+          <a href="mailto:info@makemytrip.com" class="contact"
+            >info@makemytrip.com</a
+          >
+        </p>
+      </main>
+
+  <!-- Footer -->
+  <footer class="page-footer">
+
+    <!-- Footer Elements -->
+  <div class="container">
+
+  <!-- Grid row-->
+  <div class="row">
+
+    <!-- Grid column -->
+    <div class="col-md-12 py-5">
+      <div class="mb-5 flex-center">
+
+
+        <a class="fb-ic" href="https://www.facebook.com/">
+          <i class="fab fa-facebook-f fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+        </a>
+
+        
+        <a class="gplus-ic" href="https://www.instagram.com/">
+          <i class="fab fa-google-plus-g fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+        </a>
+
+      
+       
+      </div>
+    </div>
+
+
+  </div>
+    </div>
+
+    <div class="footer-copyright text-center py-3"> 
+      &copy; Copyright 2020 Make My Trip. All Right Reseved.<br>
+   <a href="index.html">info@makemytrip.com</a>    
+  </div>
+
+  </footer>
+  </body>
+  <script type="text/javascript">
+  function performLogout() {
+    localStorage.removeItem("currentuser");
+    window.href = "login-signup.html";
+      alert(" Logout ");
+  }
+
+  </script>
+
+  <script type="text/javascript" src="script.js" >
+  </script>
+
+</html>

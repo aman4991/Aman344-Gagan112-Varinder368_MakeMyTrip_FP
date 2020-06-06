@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+  <meta name="viewport" content="width=device-width, intial-scale=1.0">
+    <link rel="stylesheet" href="HomeStyle.css">
+    <link rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.0/css/mdb.min.css" rel="stylesheet">
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="Models.js">
+
+    </script>
+    <title>Services</title>
+    <script src="script.js" charset="utf-8"></script>
+    <script type="text/javascript">
+    function performLogout() {
+      localStorage.removeItem("currentuser");
+      window.href = "login-signup.html";
+        alert(" Logout ");
+    }
+    function bookHotel(){
+
+    const userId = localStorage.getItem("currentuser");
+
+    let hotel_name = document.getElementById('hotel_name').value;
+    let checkIn = document.getElementById('checkIn').value;
+    let checkOut = document.getElementById('checkOut').value;
+    let room = document.getElementById('room').value;
+
+    var hotelbooking = new HotelBooking(hotel_name,room,checkIn,checkOut,userId);
+    console.log(hotelbooking);
+    addHotelRequestToDB(hotelbooking);
+    alert("Booking done");
+    }
+
+    </script>
+
+
+    <title></title>
+    <style>
+
+
+
+    </style>
+  </head>
+  <body>
+    <div class="header">
+    <a href="index.html" class="logo">Make My Trip</a>
+    <div class="header-right">
+      <a  href="index.html">Home</a>
+      
+      <a class="active" href="Services.html">Services</a>
+      <a href="contact-us.html">Contact</a>
+        <a href="About-us.html">About</a>
+        <a href="mylist.html" id="mylist">My List</a>
+      <a href="login-signup.html" id="login_b">Login</a>
+      <a href="login-signup.html" id="logout_b" onclick="performLogout()">Logout</a>
+
+     
+    </div>
+    </div>
+    <section class="first">
+      <h1>ENJOY TRAVEL</h1>
+        </section>
+        <br>
+        <br>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+
+
+
+   <section class="roberto-about-area section-padding-100-0 pb-5">
+        <!-- Hotel Search Form Area -->
+        <div class="hotel-search-form-area">
+            <div class="container">
+              <h1  class="hotel"align="center"  >Book Your Hotel Here</h1><br>
+              <form>
+                <div class="hotel-search-form" align="center">
+                    <form >
+                          <div class="col-4 col-md-1 col-lg-3">
+                              <label for="hotels">Hotel</label>
+                              <select name="hotel_name" id="hotel_name" class="form-control">
+                                  <option value="Select Hotel">Select Hotel </option>
+                                  <option value="Radision">Radision </option>
+                                  <option value="Blue">Blue</option>
+                                  <option value="Taj">Taj</option>
+                                  <option value="Lilly">Lilly</option>
+                               
+                              </select>                    
+                          </div>
+                        
+                            <div class="col-6 col-md-2 col-lg-3">
+                              
+                                <label for="checkIn">Check In</label>
+                                <input type="date" class="form-control" id="checkIn" name="checkin-date">
+                            </div>
+                            <div class="col-6 col-md-2 col-lg-3">
+                                <label for="checkOut">Check Out</label>
+                                <input type="date" class="form-control" id="checkOut" name="checkout-date">
+                            </div>
+                            <div class="col-6 col-md-2 col-lg-3">
+                                <label for="room">Room</label>
+                                <select name="room" id="room" class="form-control">
+                                    <option value="01">01</option>
+                                    <option value="02">02</option>
+                                    <option value="03">03</option>
+                                   
+                                </select>
+                            </div>
+                            <br>
+                            <div class="ccol-6 col-md-2 col-lg-3">
+                                <button type="button" onclick="bookHotel()" style="background-color:rgb(236, 18, 18);color: #fff; width: 50%;">Book</button>
+                            </div>
+                      
+                    </form>
+                </div>
+              </form>
+            </div>
+        </div>
+      </section>
+
+  </div>
+</div>
+
+</div>
+</div>
+  <!-- Footer -->
+  <footer class="page-footer">
+
+    <!-- Footer Elements -->
+  <div class="container">
+
+  <!-- Grid row-->
+  <div class="row">
+
+    <!-- Grid column -->
+    <div class="col-md-12 py-5">
+      <div class="mb-5 flex-center">
+
+
+        <a class="fb-ic" href="https://www.facebook.com/">
+          <i class="fab fa-facebook-f fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+        </a>
+
+        
+        <a class="gplus-ic" href="https://www.instagram.com/">
+          <i class="fab fa-google-plus-g fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+        </a>
+
+      
+       
+      </div>
+    </div>
+
+
+  </div>
+    </div>
+
+    <div class="footer-copyright text-center py-3"> 
+      & Copyright 2020 Make My Trip. All Right Reseved.<br>
+   <a href="index.html">info@makemytrip.com</a>    
+  </div>
+
+  </footer>
+</div>
+
+</div>
+  </div>
+
+
+  </body>
+</html>
